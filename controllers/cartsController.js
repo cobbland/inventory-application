@@ -1,6 +1,6 @@
 const db = require('../db/queries');
 
-async function helloWorld(req, res) {
+async function allCarts(req, res) {
     const tableData = await db.getAllData();
     res.render('index', {
         title: "Carts",
@@ -9,4 +9,11 @@ async function helloWorld(req, res) {
     });
 }
 
-module.exports = helloWorld;
+function newCart(req, res) {
+    res.render('new-cart', {
+        title: "New Cart",
+        message: "Add a new cart",
+    });
+}
+
+module.exports = { allCarts, newCart };
