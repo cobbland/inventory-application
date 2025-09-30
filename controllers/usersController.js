@@ -16,4 +16,10 @@ function newUser(req, res) {
     });
 }
 
-module.exports = { allUsers, newUser };
+async function newUserPost(req, res) {
+    const { username } = req.body;
+    await db.insertUser(username);
+    res.redirect('/users');
+}
+
+module.exports = { allUsers, newUser, newUserPost };

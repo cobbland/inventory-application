@@ -1,8 +1,12 @@
 const pool = require('./pool');
 
 async function getAllData() {
-    const { rows } = await pool.query('SELECT * FROM tests');
+    const { rows } = await pool.query('SELECT * FROM tests;');
     return rows;
 }
 
-module.exports = { getAllData };
+async function insertUser(username) {
+    await pool.query("INSERT INTO tests (name) VALUES ($1);", [username]);
+}
+
+module.exports = { getAllData, insertUser };
