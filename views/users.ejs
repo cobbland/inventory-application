@@ -1,0 +1,8 @@
+<%- include('head-body-top') -%>
+
+<p><%= message %></p>
+<p><%= tableData.map(data => data.name).join(', ') %></p>
+
+<a href="users/new"><button>New</button></a>
+
+<%- include('footer-body-bottom') -%>

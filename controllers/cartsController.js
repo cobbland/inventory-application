@@ -2,7 +2,7 @@ const db = require('../db/queries');
 
 async function allCarts(req, res) {
     const tableData = await db.getAllData();
-    res.render('index', {
+    res.render('carts', {
         title: "Carts",
         message: "Here are all the carts",
         tableData: tableData,
