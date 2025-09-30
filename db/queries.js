@@ -1,12 +1,21 @@
 const pool = require('./pool');
 
-async function getAllData() {
-    const { rows } = await pool.query('SELECT * FROM tests;');
+async function getUsers() {
+    const { rows } = await pool.query('SELECT * FROM users;');
     return rows;
 }
 
-async function insertUser(username) {
-    await pool.query("INSERT INTO tests (name) VALUES ($1);", [username]);
+async function insertUser(username, password) {
+    await pool.query("INSERT INTO users (username, password) VALUES ($1, $2);", [username, password]);
 }
 
-module.exports = { getAllData, insertUser };
+async function getCarts() {
+    const { rows } = await pool.query('SELECT * FROM carts;');
+    return rows;
+}
+
+async function insertCart(title, creator, cartType, platform) {
+    await pool.query("INSERT INTO carts (title, creator, cart_type, platform) VALUES ($1, $2, $3, $4);", [title, creator, cartType, platform]);
+}
+
+module.exports = { getUsers, insertUser, getCarts, insertCart };

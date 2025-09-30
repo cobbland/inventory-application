@@ -1,7 +1,7 @@
 const db = require('../db/queries');
 
 async function allUsers(req, res) {
-    const tableData = await db.getAllData();
+    const tableData = await db.getUsers();
     res.render('users', {
         title: "Users",
         message: "Here are all the users",
@@ -17,8 +17,8 @@ function newUser(req, res) {
 }
 
 async function newUserPost(req, res) {
-    const { username } = req.body;
-    await db.insertUser(username);
+    const { username, password } = req.body;
+    await db.insertUser(username, password);
     res.redirect('/users');
 }
 

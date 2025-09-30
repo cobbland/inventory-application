@@ -1,7 +1,7 @@
 const db = require('../db/queries');
 
 async function allCarts(req, res) {
-    const tableData = await db.getAllData();
+    const tableData = await db.getCarts();
     res.render('carts', {
         title: "Carts",
         message: "Here are all the carts",
@@ -16,4 +16,11 @@ function newCart(req, res) {
     });
 }
 
-module.exports = { allCarts, newCart };
+async function newCartPost(req, res) {
+    const { title, creator, platform } = req.body;
+    const [cartType, platformSplit] = platform.split(':');
+    await db.insertCart(title, creator, cartType, platformSplit);
+    res.redirect('/carts');
+}
+
+module.exports = { allCarts, newCart, newCartPost };
