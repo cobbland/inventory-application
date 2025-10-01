@@ -10,7 +10,7 @@ async function insertUser(username, password) {
 }
 
 async function getCarts() {
-    const { rows } = await pool.query('SELECT * FROM carts;');
+    const { rows } = await pool.query("SELECT * FROM carts;");
     return rows;
 }
 
@@ -18,4 +18,13 @@ async function insertCart(title, creator, cartType, platform) {
     await pool.query("INSERT INTO carts (title, creator, cart_type, platform) VALUES ($1, $2, $3, $4);", [title, creator, cartType, platform]);
 }
 
-module.exports = { getUsers, insertUser, getCarts, insertCart };
+async function getSomeCarts(field, fieldData) {
+    const fieldQuery = `
+        SELECT * FROM carts
+        WHERE ${field} = $1;
+    `;
+    const { rows } = await pool.query(fieldQuery, [fieldData]);
+    return rows;
+}
+
+module.exports = { getUsers, insertUser, getCarts, insertCart, getSomeCarts };

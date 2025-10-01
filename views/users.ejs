@@ -1,8 +1,15 @@
 <%- include('head-body-top') -%>
 
-<p><%= message %></p>
 <p><%= tableData.map(data => data.username).join(', ') %></p>
 
 <a href="users/new"><button>New</button></a>
+
+<ul>
+<% tableData.forEach(data => { %>
+    <li>
+        <a class="cart-title" href="/users/id/<%= data.id %>"><%= data.username %></a>
+    </li>
+<% }); %>
+</ul>
 
 <%- include('footer-body-bottom') -%>

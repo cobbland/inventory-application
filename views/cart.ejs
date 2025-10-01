@@ -1,0 +1,14 @@
+<%- include('head-body-top') -%>
+
+<ul>
+<% tableData.forEach(data => { %>
+    <li>
+        <%= data.creator %>
+    </li>
+    <li>
+        <%= data.cart_type %> (<%= (data.platform) %>)
+    </li>
+<% }); %>
+</ul>
+
+<%- include('footer-body-bottom') -%>

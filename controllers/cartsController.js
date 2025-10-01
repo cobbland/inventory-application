@@ -4,7 +4,25 @@ async function allCarts(req, res) {
     const tableData = await db.getCarts();
     res.render('carts', {
         title: "Carts",
-        message: "Here are all the carts",
+        tableData: tableData,
+    });
+}
+
+async function someCarts(req, res) {
+    const { field, fieldData } = req.params;
+    const tableData = await db.getSomeCarts(field, fieldData);
+    const message = `Here are all the ${fieldData} ${field}s`
+    res.render('carts', {
+        title: fieldData,
+        tableData: tableData,
+    });
+}
+
+async function oneCart(req, res) {
+    const { cartID } = req.params;
+    const tableData = await db.getSomeCarts('id', cartID);
+    res.render('cart', {
+        title: tableData[0].title,
         tableData: tableData,
     });
 }
@@ -12,7 +30,6 @@ async function allCarts(req, res) {
 function newCart(req, res) {
     res.render('new-cart', {
         title: "New Cart",
-        message: "Add a new cart",
     });
 }
 
@@ -23,4 +40,4 @@ async function newCartPost(req, res) {
     res.redirect('/carts');
 }
 
-module.exports = { allCarts, newCart, newCartPost };
+module.exports = { allCarts, someCarts, oneCart, newCart, newCartPost };

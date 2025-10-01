@@ -1,8 +1,16 @@
 <%- include('head-body-top') -%>
 
-<p><%= message %></p>
-<p><%= tableData.map(data => data.title).join(', ') %></p>
+<a href="/carts/new"><button>New</button></a>
 
-<a href="carts/new"><button>New</button></a>
+<ul>
+<% tableData.forEach(data => { %>
+    <li>
+        <a class="cart-title" href="/carts/id/<%= data.id %>"><%= data.title %></a>, 
+        <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
+        <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
+        (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+    </li>
+<% }); %>
+</ul>
 
 <%- include('footer-body-bottom') -%>
