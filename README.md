@@ -18,9 +18,9 @@ There are users. There are carts. Each user has carts. Each cart a user has can 
 
 **Users**
 
-| id  | username | password |
-| --- | -------- | -------- |
-|     |          |          |
+| id  | username | password | admin |
+| --- | -------- | -------- | ----- |
+|     |          |          |       |
 
 **User Carts**
 
