@@ -4,7 +4,15 @@ async function allUsers(req, res) {
     const tableData = await db.getUsers();
     res.render('users', {
         title: "Users",
-        message: "Here are all the users",
+        tableData: tableData,
+    });
+}
+
+async function oneUser(req, res) {
+    const { id } = req.params;
+    const tableData = await db.getUser(id);
+    res.render('user', {
+        title: tableData[0].username,
         tableData: tableData,
     });
 }
@@ -22,4 +30,4 @@ async function newUserPost(req, res) {
     res.redirect('/users');
 }
 
-module.exports = { allUsers, newUser, newUserPost };
+module.exports = { allUsers, oneUser, newUser, newUserPost };
