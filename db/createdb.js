@@ -25,10 +25,11 @@ CREATE TABLE IF NOT EXISTS users_carts (
     user_id INTEGER NOT NULL,
     cart_id INTEGER NOT NULL,
     status VARCHAR ( 255 ) NOT NULL DEFAULT 'bin',
-    date_added DATE NOT NULL,
+    date_added DATE NOT NULL DEFAULT CURRENT_DATE,
     date_started DATE,
     date_finished DATE,
-    rating INTEGER
+    rating INTEGER,
+    UNIQUE (user_id, cart_id)
 );
 `;
 

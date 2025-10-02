@@ -8,7 +8,8 @@
             <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
-            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
+            <%= data.date_started %>
         </li>
     <% } %>
 <% }); %>
@@ -22,7 +23,9 @@
             <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
-            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
+            <%= data.date_added %><% if (data.rating > 0) { %>, 
+            <%= data.rating %>/4<% }; %>
         </li>
     <% } %>
 <% }); %>
@@ -36,7 +39,8 @@
             <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
-            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
+            <%= data.date_finished %>
         </li>
     <% } %>
 <% }); %>
@@ -50,7 +54,8 @@
             <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
-            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
+            <%= data.date_finished %>
         </li>
     <% } %>
 <% }); %>

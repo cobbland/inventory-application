@@ -1,14 +1,14 @@
 <%- include('head-body-top') -%>
 
 <ul>
-<% tableData.forEach(data => { %>
     <li>
-        <%= data.creator %>
+        <%= tableData.creator %>
     </li>
     <li>
-        <%= data.cart_type %> (<%= (data.platform) %>)
+        <%= tableData.cart_type %> (<%= (tableData.platform) %>)
     </li>
-<% }); %>
 </ul>
+
+<a href="/carts/id/<%= tableData.id %>/add-cart-to-user"><button>Update Cart for User</button></a>
 
 <%- include('footer-body-bottom') -%>

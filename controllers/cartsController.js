@@ -23,7 +23,7 @@ async function oneCart(req, res) {
     const tableData = await db.getSomeCarts('id', cartID);
     res.render('cart', {
         title: tableData[0].title,
-        tableData: tableData,
+        tableData: tableData[0],
     });
 }
 
@@ -40,4 +40,22 @@ async function newCartPost(req, res) {
     res.redirect('/carts');
 }
 
-module.exports = { allCarts, someCarts, oneCart, newCart, newCartPost };
+async function addCartToUser(req, res) {
+    const { cartID } = req.params;
+    const tableData = await db.getSomeCarts('id', cartID);
+    const usernames = await db.getUsers();
+    const title = `Update ${tableData[0].title} for user`;
+    res.render('add-cart-to-user', {
+        title: title,
+        cart: tableData[0],
+        usernames: usernames,
+    });
+}
+
+async function postCartToUser(req, res) {
+    const { cart, username, status, rating, remove } = req.body;
+    await db.postCartToUser(cart, username, status, rating, remove);
+    res.redirect(`/users/id/${username}`);
+}
+
+module.exports = { allCarts, someCarts, oneCart, newCart, newCartPost, addCartToUser, postCartToUser };

@@ -1,0 +1,34 @@
+<%- include('head-body-top') -%>
+
+<form action="/carts/id/<%= cart.id %>/add-cart-to-user" method="POST">
+    <input value="<%= cart.id %>" type="hidden" name="cart" id="cart">
+    <label for="username">Username</label>
+    <select name="username" id="username">
+        <% usernames.forEach(user => { %>
+            <option value="<%= user.id %>"><%= user.username %></option>
+        <% }); %>
+    </select>
+    <label for="status">Status</label>
+    <select name="status" id="status">
+        <option value="playlist">playlist</option>
+        <option value="shelf">shelf</option>
+        <option value="bin">bin</option>
+        <option value="trash">trash</option>
+    </select>
+    <label for="rating">Rating</label>
+    <select name="rating" id="rating">
+        <option value="null">none</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <label for="remove">Remove</label>
+    <select name="remove" id="remove">
+        <option value="no">no</option>
+        <option value="yes">yes</option>
+    </select>
+    <input type="submit" value="Update">
+</form>
+
+<%- include('footer-body-bottom') -%>

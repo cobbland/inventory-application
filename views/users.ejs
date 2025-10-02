@@ -5,7 +5,7 @@
 <ul>
 <% tableData.forEach(data => { %>
     <li>
-        <a class="cart-title" href="/users/id/<%= data.id %>"><%= data.username %></a>
+        <a href="/users/id/<%= data.id %>"><%= data.username %></a>
     </li>
 <% }); %>
 </ul>
