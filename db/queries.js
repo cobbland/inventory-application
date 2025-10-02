@@ -7,7 +7,10 @@ async function getUsers() {
 
 async function getUser(id) {
     const { rows } = await pool.query(`
-        SELECT * FROM users_carts
+        SELECT carts.title, carts.creator, carts.cart_type, carts.platform, users.username,
+        cart_id, status, date_added, date_started, date_finished, rating FROM users_carts
+        JOIN carts ON users_carts.cart_id = carts.id
+        JOIN users ON users_carts.user_id = users.id
         WHERE user_id = $1;
     `, [id]);
     return rows;

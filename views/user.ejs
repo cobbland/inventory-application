@@ -1,14 +1,59 @@
 <%- include('head-body-top') -%>
 
+<h2>Playlist</h2>
 <ul>
-<!-- <% tableData.forEach(data => { %>
-    <li>
-        <%= data.creator %>
-    </li>
-    <li>
-        <%= data.cart_type %> (<%= (data.platform) %>)
-    </li>
-<% }); %> -->
+<% tableData.forEach(data => { %>
+    <% if (data.status === 'playlist') { %>
+        <li>
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
+            <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+        </li>
+    <% } %>
+<% }); %>
+</ul>
+
+<h2>Shelf</h2>
+<ul>
+<% tableData.forEach(data => { %>
+    <% if (data.status === 'shelf') { %>
+        <li>
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
+            <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+        </li>
+    <% } %>
+<% }); %>
+</ul>
+
+<h2>Bin</h2>
+<ul>
+<% tableData.forEach(data => { %>
+    <% if (data.status === 'bin') { %>
+        <li>
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
+            <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+        </li>
+    <% } %>
+<% }); %>
+</ul>
+
+<h2>Trash</h2>
+<ul>
+<% tableData.forEach(data => { %>
+    <% if (data.status === 'trash') { %>
+        <li>
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
+            <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
+            (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>)
+        </li>
+    <% } %>
+<% }); %>
 </ul>
 
 <%- include('footer-body-bottom') -%>
