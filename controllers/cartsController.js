@@ -58,4 +58,14 @@ async function postCartToUser(req, res) {
     res.redirect(`/users/id/${username}`);
 }
 
-module.exports = { allCarts, someCarts, oneCart, newCart, newCartPost, addCartToUser, postCartToUser };
+async function deleteCart(req, res) {
+    const { cartID } = req.params;
+    await db.deleteCart(cartID);
+    res.redirect('/carts');
+}
+
+module.exports = { 
+    allCarts, someCarts, oneCart, newCart, 
+    newCartPost, addCartToUser, postCartToUser, 
+    deleteCart, 
+};

@@ -4,6 +4,7 @@ const controller = require('../controllers/cartsController');
 
 router.get('/', controller.allCarts);
 router.get('/id/:cartID', controller.oneCart);
+router.get('/id/:cartID/delete', controller.deleteCart);
 router.get('/:field/:fieldData', controller.someCarts);
 router.get('/new', controller.newCart);
 router.post('/new', controller.newCartPost);

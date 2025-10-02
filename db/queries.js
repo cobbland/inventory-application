@@ -89,8 +89,17 @@ async function postCartToUser(cart, username, status, rating, remove) {
     }
 }
 
+async function deleteCart(id) {
+    await pool.query(`
+        DELETE FROM carts WHERE id = $1;
+    `, [ id ]);
+    await pool.query(`
+        DELETE FROM users_carts WHERE cart_id = $1;    
+    `, [ id ]);
+}
+
 module.exports = { 
     getUsers, getUser, insertUser, 
     getCarts, insertCart, getSomeCarts, 
-    postCartToUser 
+    postCartToUser, deleteCart 
 };
