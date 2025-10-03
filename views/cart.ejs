@@ -13,6 +13,19 @@
 
 <a href="#" id="delete-button"><button onclick="deleteCart()">Delete</button></a>
 
+<noscript>
+    <style>
+        #delete-button {
+            display: none;
+        }
+    </style>
+    <div>
+        <a href="/carts/id/<%= tableData.id %>/delete">
+            <button>Delete</button>
+        </a>
+    </div>
+</noscript>
+
 <script>
     const deleteButton = document.querySelector("#delete-button");
     function deleteCart() {
