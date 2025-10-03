@@ -33,3 +33,4 @@ There are users. There are carts. Each user has carts. Each cart a user has can 
 - [ ] Add error pages
 - [ ] Add editing functions
 - [ ] Add sorting
+- [ ] Add average review score on cart pages
