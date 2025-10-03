@@ -27,3 +27,8 @@ There are users. There are carts. Each user has carts. Each cart a user has can 
 | id  | user_id | cart_id | status | date_added | date_started | date_finished | rating |
 | --- | ------- | ------- | ------ | ---------- | ------------ | ------------- | ------ |
 |     |         |         |        |            |              |               |        |
+
+### Todo
+
+- [ ] Add error pages
+- [ ] Add editing functions
