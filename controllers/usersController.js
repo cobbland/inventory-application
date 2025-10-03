@@ -10,9 +10,11 @@ async function allUsers(req, res) {
 
 async function oneUser(req, res) {
     const { id } = req.params;
-    const tableData = await db.getUser(id);
+    const username = await db.getUsername(id);
+    const tableData = await db.getUserData(id);
     res.render('user', {
-        title: tableData[0].username,
+        title: username,
+        userID: id,
         tableData: tableData,
     });
 }
@@ -30,4 +32,10 @@ async function newUserPost(req, res) {
     res.redirect('/users');
 }
 
-module.exports = { allUsers, oneUser, newUser, newUserPost };
+async function deleteUser(req, res) {
+    const { id } = req.params;
+    await db.deleteUser(id);
+    res.redirect('/users');
+}
+
+module.exports = { allUsers, oneUser, newUser, newUserPost, deleteUser };

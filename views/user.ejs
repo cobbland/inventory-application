@@ -61,4 +61,28 @@
 <% }); %>
 </ul>
 
+<a href="#" id="delete-button"><button onclick="deleteCart()">Delete</button></a>
+
+<noscript>
+    <style>
+        #delete-button {
+            display: none;
+        }
+    </style>
+    <div>
+        <a href="/users/id/<%= userID %>/delete">
+            <button>Delete</button>
+        </a>
+    </div>
+</noscript>
+
+<script>
+    const deleteButton = document.querySelector("#delete-button");
+    function deleteCart() {
+        if (confirm("Are you sure you want to delete <%= title %>?")) {
+            deleteButton.href = "/users/id/<%= userID %>/delete";
+        }
+    }
+</script>
+
 <%- include('footer-body-bottom') -%>

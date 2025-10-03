@@ -5,7 +5,15 @@ async function getUsers() {
     return rows;
 }
 
-async function getUser(id) {
+async function getUsername(id) {
+    const { rows } = await pool.query(`
+        SELECT username FROM users
+        WHERE id = $1;    
+    `, [ id ]);
+    return rows[0].username;
+}
+
+async function getUserData(id) {
     const { rows } = await pool.query(`
         SELECT carts.title, carts.creator, carts.cart_type, carts.platform, users.username,
         cart_id, status, date_added, date_started, date_finished, rating FROM users_carts
@@ -18,6 +26,15 @@ async function getUser(id) {
 
 async function insertUser(username, password) {
     await pool.query("INSERT INTO users (username, password) VALUES ($1, $2);", [username, password]);
+}
+
+async function deleteUser(id) {
+    await pool.query(`
+        DELETE FROM users WHERE id = $1;
+    `, [id]);
+    await pool.query(`
+        DELETE FROM users_carts WHERE user_id = $1;
+    `, [id]);
 }
 
 async function getCarts() {
@@ -99,7 +116,7 @@ async function deleteCart(id) {
 }
 
 module.exports = { 
-    getUsers, getUser, insertUser, 
-    getCarts, insertCart, getSomeCarts, 
-    postCartToUser, deleteCart 
+    getUsers, getUsername, getUserData, insertUser, 
+    deleteUser, getCarts, insertCart, getSomeCarts, 
+    postCartToUser, deleteCart,
 };
