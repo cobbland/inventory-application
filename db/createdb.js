@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS carts (
   title VARCHAR ( 255 ) NOT NULL,
   creator VARCHAR ( 255 ) NOT NULL,
   cart_type VARCHAR ( 255 ) NOT NULL,
-  platform VARCHAR ( 255 ) NOT NULL
+  platform VARCHAR ( 255 ) NOT NULL,
+  UNIQUE (title, creator, cart_type, platform)
 );
 
 CREATE TABLE IF NOT EXISTS users_carts (
