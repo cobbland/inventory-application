@@ -9,7 +9,7 @@
     </li>
 </ul>
 
-<a href="/carts/id/<%= tableData.id %>/add-cart-to-user"><button>Update Cart for User</button></a>
+<a href="/carts/id/<%= tableData.id %>/add-cart-to-user?user=<%= user || 'none' %>"><button>Update Cart for <%= user || "user" %></button></a>
 
 <a href="/carts/id/<%= tableData.id %>/edit"><button>Edit Cart</button></a>
 

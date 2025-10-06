@@ -5,7 +5,7 @@
 <% tableData.forEach(data => { %>
     <% if (data.status === 'playlist') { %>
         <li>
-            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>?user=<%= title %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
@@ -20,7 +20,7 @@
 <% tableData.forEach(data => { %>
     <% if (data.status === 'shelf') { %>
         <li>
-            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>?user=<%= title %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
@@ -36,7 +36,7 @@
 <% tableData.forEach(data => { %>
     <% if (data.status === 'bin') { %>
         <li>
-            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>?user=<%= title %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
@@ -51,7 +51,7 @@
 <% tableData.forEach(data => { %>
     <% if (data.status === 'trash') { %>
         <li>
-            <a class="cart-title" href="/carts/id/<%= data.cart_id %>"><%= data.title %></a>, 
+            <a class="cart-title" href="/carts/id/<%= data.cart_id %>?user=<%= title %>"><%= data.title %></a>, 
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 

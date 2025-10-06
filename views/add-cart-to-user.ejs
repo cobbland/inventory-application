@@ -2,26 +2,66 @@
 
 <form action="/carts/id/<%= cart.id %>/add-cart-to-user" method="POST">
     <input value="<%= cart.id %>" type="hidden" name="cart" id="cart">
-    <label for="username">Username</label>
-    <select name="username" id="username">
-        <% usernames.forEach(user => { %>
-            <option value="<%= user.id %>"><%= user.username %></option>
-        <% }); %>
-    </select>
+    <% if (user === 'none') { %>
+        <label for="username">Username</label>
+        <select name="username" id="username">
+            <% usernames.forEach(user => { %>
+                <option value="<%= user.id %>"><%= user.username %></option>
+            <% }); %>
+        </select>
+    <% }  else { %>
+        <input type="hidden" 
+            name="username" 
+            id="username" 
+            value="<%= usernames.find(u => u.username === user).id %>"
+        >
+    <% } %>
     <label for="status">Status</label>
     <select name="status" id="status">
-        <option value="playlist">playlist</option>
-        <option value="shelf">shelf</option>
-        <option value="bin">bin</option>
-        <option value="trash">trash</option>
+        <option value="bin" 
+            <% if (userCart.status === 'bin') { %>
+                <%- 'selected' %>
+            <% } %>
+        >bin</option>
+        <option value="playlist" 
+            <% if (userCart.status === 'playlist') { %>
+                <%- 'selected' %>
+            <% } %>
+        >playlist</option>
+        <option value="shelf" 
+            <% if (userCart.status === 'shelf') { %>
+                <%- 'selected' %>
+            <% } %>
+        >shelf</option>
+        <option value="trash" 
+            <% if (userCart.status === 'trash') { %>
+                <%- 'selected' %>
+            <% } %>
+        >trash</option>
     </select>
     <label for="rating">Rating</label>
     <select name="rating" id="rating">
         <option value="null">none</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+        <option value="1" 
+            <% if (userCart.rating == '1') { %>
+                <%- 'selected' %>
+            <% } %>
+        >1</option>
+        <option value="2" 
+            <% if (userCart.rating == '2') { %>
+                <%- 'selected' %>
+            <% } %>
+        >2</option>
+        <option value="3" 
+            <% if (userCart.rating == '3') { %>
+                <%- 'selected' %>
+            <% } %>
+        >3</option>
+        <option value="4" 
+            <% if (userCart.rating == '4') { %>
+                <%- 'selected' %>
+            <% } %>
+        >4</option>
     </select>
     <label for="remove">Remove</label>
     <select name="remove" id="remove">

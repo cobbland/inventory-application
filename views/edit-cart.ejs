@@ -8,14 +8,48 @@
     <label for="platform">Type & Platform</label>
     <select name="platform" id="platform" >
         <optgroup label="bookcarts">
-            <option value="bookcart:manga">manga</option>
-            <option value="bookcart:novel">novel</option>
+            <option value="bookcart:manga"
+                <% if (cart.platform === 'manga') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >manga</option>
+            <option value="bookcart:novel"
+                <% if (cart.platform === 'novel') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >novel</option>
         </optgroup>
         <optgroup label="gamecarts">
-            <option value="gamecart:gba">gba</option>
-            <option value="gamecart:gbc">gbc</option>
-            <option value="gamecart:pc">pc</option>
-            <option value="gamecart:snes">snes</option>
+            <option value="gamecart:dmg"
+                <% if (cart.platform === 'dmg') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >dmg</option>
+            <option value="gamecart:gba"
+                <% if (cart.platform === 'gba') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >gba</option>
+            <option value="gamecart:gbc"
+                <% if (cart.platform === 'gbc') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >gbc</option>
+            <option value="gamecart:nes"
+                <% if (cart.platform === 'nes') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >nes</option>
+            <option value="gamecart:pc"
+                <% if (cart.platform === 'pc') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >pc</option>
+            <option value="gamecart:snes"
+                <% if (cart.platform === 'snes') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >snes</option>
         </optgroup>
         <optgroup label="videocarts">
             <option value="videocart:movie"
@@ -23,7 +57,11 @@
                     <%- 'selected' %>
                 <% } %>
             >movie</option>
-            <option value="videocart:show">show</option>
+            <option value="videocart:show"
+                <% if (cart.platform === 'show') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >show</option>
         </optgroup>
     </select>
     <input type="submit" value="Submit">

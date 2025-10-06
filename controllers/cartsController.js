@@ -20,10 +20,12 @@ async function someCarts(req, res) {
 
 async function oneCart(req, res) {
     const { cartID } = req.params;
+    const { user } = req.query || false;
     const tableData = await db.getSomeCarts('id', cartID);
     res.render('cart', {
         title: tableData[0].title,
         tableData: tableData[0],
+        user: user,
     });
 }
 
@@ -58,13 +60,22 @@ async function newCartPost(req, res) {
 
 async function addCartToUser(req, res) {
     const { cartID } = req.params;
+    const { user } = req.query || 'none';
     const tableData = await db.getSomeCarts('id', cartID);
     const usernames = await db.getUsers();
-    const title = `Update ${tableData[0].title} for user`;
+    let userCart = 'none';
+    if (user !== 'none') {
+        const userID = usernames.find(u => u.username === user).id;
+        const usersCarts = await db.getUserData(userID);
+        userCart = usersCarts.find(c => c.cart_id == cartID);
+    }
+    const title = `Update ${tableData[0].title} for ${ user === 'none' ? 'user' : user}`;
     res.render('add-cart-to-user', {
         title: title,
         cart: tableData[0],
         usernames: usernames,
+        user: user,
+        userCart: userCart,
     });
 }
 
