@@ -27,6 +27,22 @@ async function oneCart(req, res) {
     });
 }
 
+async function editCart(req, res) {
+    const { cartID } = req.params;
+    const tableData = await db.getSomeCarts('id', cartID);
+    res.render('edit-cart', {
+        title: "Edit Cart",
+        cart: tableData[0],
+    });
+}
+
+async function editCartPost(req, res) {
+    const { title, creator, platform } = req.body;
+    const [cartType, platformSplit] = platform.split(':');
+    await db.editCart(req.params.cartID, title, creator, cartType, platformSplit);
+    res.redirect('/carts/id/' + req.params.cartID);
+}
+
 function newCart(req, res) {
     res.render('new-cart', {
         title: "New Cart",
@@ -65,7 +81,7 @@ async function deleteCart(req, res) {
 }
 
 module.exports = { 
-    allCarts, someCarts, oneCart, newCart, 
-    newCartPost, addCartToUser, postCartToUser, 
+    allCarts, someCarts, oneCart, editCart, newCart, 
+    editCartPost, newCartPost, addCartToUser, postCartToUser, 
     deleteCart, 
 };

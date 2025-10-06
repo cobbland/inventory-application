@@ -46,6 +46,14 @@ async function insertCart(title, creator, cartType, platform) {
     await pool.query("INSERT INTO carts (title, creator, cart_type, platform) VALUES ($1, $2, $3, $4);", [title, creator, cartType, platform]);
 }
 
+async function editCart(id, title, creator, cartType, platform) {
+    await pool.query(`
+        UPDATE carts
+        SET title = $2, creator = $3, cart_type = $4, platform = $5
+        WHERE id = $1;
+    `, [id, title, creator, cartType, platform]);
+}
+
 async function getSomeCarts(field, fieldData) {
     const fieldQuery = `
         SELECT * FROM carts
@@ -118,5 +126,5 @@ async function deleteCart(id) {
 module.exports = { 
     getUsers, getUsername, getUserData, insertUser, 
     deleteUser, getCarts, insertCart, getSomeCarts, 
-    postCartToUser, deleteCart,
+    postCartToUser, deleteCart, editCart,
 };

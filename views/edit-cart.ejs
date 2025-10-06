@@ -1,12 +1,12 @@
 <%- include('head-body-top') -%>
 
-<form action="/carts/new" method="POST">
+<form action="/carts/id/<%= cart.id %>/edit" method="POST">
     <label for="title">Title</label>
-    <input type="text" id="title" name="title">
+    <input type="text" id="title" name="title" value="<%= cart.title %>">
     <label for="creator">Creator</label>
-    <input type="text" id="creator" name="creator">
+    <input type="text" id="creator" name="creator" value="<%= cart.creator %>">
     <label for="platform">Type & Platform</label>
-    <select name="platform" id="platform">
+    <select name="platform" id="platform" >
         <optgroup label="bookcarts">
             <option value="bookcart:manga">manga</option>
             <option value="bookcart:novel">novel</option>
@@ -18,11 +18,15 @@
             <option value="gamecart:snes">snes</option>
         </optgroup>
         <optgroup label="videocarts">
-            <option value="videocart:movie">movie</option>
+            <option value="videocart:movie"
+                <% if (cart.platform === 'movie') { %>
+                    <%- 'selected' %>
+                <% } %>
+            >movie</option>
             <option value="videocart:show">show</option>
         </optgroup>
     </select>
-    <input type="submit" value="Add">
+    <input type="submit" value="Submit">
 </form>
 
 <%- include('footer-body-bottom') -%>

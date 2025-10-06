@@ -31,7 +31,7 @@ There are users. There are carts. Each user has carts. Each cart a user has can 
 ### Todo
 
 - [ ] Add error pages
-- [ ] Add editing functions
+- [x] Add editing functions
 - [ ] Add sorting
 - [ ] Add average review score on cart pages
 - [ ] Add score and level to users
