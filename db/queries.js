@@ -1,7 +1,7 @@
 const pool = require('./pool');
 
 async function getUsers() {
-    const { rows } = await pool.query('SELECT * FROM users;');
+    const { rows } = await pool.query('SELECT * FROM users ORDER BY username;');
     return rows;
 }
 
@@ -19,7 +19,8 @@ async function getUserData(id) {
         cart_id, status, date_added, date_started, date_finished, rating FROM users_carts
         JOIN carts ON users_carts.cart_id = carts.id
         JOIN users ON users_carts.user_id = users.id
-        WHERE user_id = $1;
+        WHERE user_id = $1
+        ORDER BY carts.title;
     `, [id]);
     return rows;
 }
@@ -38,7 +39,7 @@ async function deleteUser(id) {
 }
 
 async function getCarts() {
-    const { rows } = await pool.query("SELECT * FROM carts;");
+    const { rows } = await pool.query("SELECT * FROM carts ORDER BY title;");
     return rows;
 }
 
@@ -57,7 +58,8 @@ async function editCart(id, title, creator, cartType, platform) {
 async function getSomeCarts(field, fieldData) {
     const fieldQuery = `
         SELECT * FROM carts
-        WHERE ${field} = $1;
+        WHERE ${field} = $1
+        ORDER BY title;
     `;
     const { rows } = await pool.query(fieldQuery, [fieldData]);
     return rows;
