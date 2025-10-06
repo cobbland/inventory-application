@@ -12,10 +12,14 @@ async function oneUser(req, res) {
     const { id } = req.params;
     const username = await db.getUsername(id);
     const tableData = await db.getUserData(id);
+    const dateFunction = (date) => {
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    }
     res.render('user', {
         title: username,
         userID: id,
         tableData: tableData,
+        dateFunction: dateFunction,
     });
 }
 

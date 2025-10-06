@@ -9,7 +9,7 @@
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
-            <%= data.date_started %>
+            <%= dateFunction(data.date_started) %>
         </li>
     <% } %>
 <% }); %>
@@ -24,7 +24,7 @@
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
-            <%= data.date_added %><% if (data.rating > 0) { %>, 
+            <%= dateFunction(data.date_finished) %><% if (data.rating > 0) { %>, 
             <%= data.rating %>/4<% }; %>
         </li>
     <% } %>
@@ -40,7 +40,7 @@
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
-            <%= data.date_finished %>
+            <%= dateFunction(data.date_added) %>
         </li>
     <% } %>
 <% }); %>
@@ -55,7 +55,7 @@
             <a href="/carts/creator/<%= data.creator %>"><%= data.creator %></a>, 
             <a href="/carts/cart_type/<%= data.cart_type %>"><%= data.cart_type %></a> 
             (<a href="/carts/platform/<%= data.platform %>"><%= (data.platform) %></a>), 
-            <%= data.date_finished %>
+            <%= dateFunction(data.date_finished) %>
         </li>
     <% } %>
 <% }); %>
