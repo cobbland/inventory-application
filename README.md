@@ -5,7 +5,7 @@ A database webapp project, made as part of The Odin Project. It uses [Express](h
 ## Media System Database
 
 This example database webapp catalogues my media consumption—books, shows, and games. (See [cobb.land/media](https://cobb.land/media/) for an example of how I do this without a database.)
-
+[text](about:blank#blocked)
 There are users. There are carts. Each user has carts. Each cart a user has can have one of four states: playlist, shelf, bin, and trash.
 
 ### Media System Database Structure
@@ -34,3 +34,4 @@ There are users. There are carts. Each user has carts. Each cart a user has can 
 - [ ] Add editing functions
 - [ ] Add sorting
 - [ ] Add average review score on cart pages
+- [ ] Add score and level to users
