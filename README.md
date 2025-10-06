@@ -35,6 +35,7 @@ There are users. There are carts. Each user has carts. Each cart a user has can 
 - [ ] Add error pages
 - [x] Add sorting
 - [ ] Add average review score on cart pages
+- [ ] Add user data to cart page
 - [ ] Add score and level to users
 - [ ] Add real user creation and sign-in
 - [ ] Add image and metadata apis
