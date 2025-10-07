@@ -1,6 +1,6 @@
 # Inventory Application
 
-A database webapp project, made as part of The Odin Project. It uses [Express](https://expressjs.com), [PostgreSQL](https://www.postgresql.org), [EJS](https://ejs.co), [node-postgres](https://node-postgres.com), and [dotenv](https://www.npmjs.com/package/dotenv).
+A database webapp project, made as part of The Odin Project. It uses [Express](https://expressjs.com), [PostgreSQL](https://www.postgresql.org), [EJS](https://ejs.co), [node-postgres](https://node-postgres.com), and [dotenv](https://www.npmjs.com/package/dotenv); and is hosted on [Render](https://render.com) with a database on [Neon](https://neon.com).
 
 ## Media System Database
 
