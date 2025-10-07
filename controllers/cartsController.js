@@ -41,8 +41,12 @@ async function editCart(req, res) {
 async function editCartPost(req, res) {
     const { title, creator, platform } = req.body;
     const [cartType, platformSplit] = platform.split(':');
-    await db.editCart(req.params.cartID, title, creator, cartType, platformSplit);
-    res.redirect('/carts/id/' + req.params.cartID);
+    try {
+        await db.editCart(req.params.cartID, title, creator, cartType, platformSplit);
+        res.redirect('/carts/id/' + req.params.cartID);
+    } catch {
+        res.redirect('/carts/id/' + req.params.cartID);
+    }
 }
 
 function newCart(req, res) {
@@ -54,8 +58,12 @@ function newCart(req, res) {
 async function newCartPost(req, res) {
     const { title, creator, platform } = req.body;
     const [cartType, platformSplit] = platform.split(':');
-    await db.insertCart(title, creator, cartType, platformSplit);
-    res.redirect('/carts');
+    try {
+        await db.insertCart(title, creator, cartType, platformSplit);
+        res.redirect('/carts');
+    } catch {
+        res.redirect('/carts');
+    }
 }
 
 async function addCartToUser(req, res) {

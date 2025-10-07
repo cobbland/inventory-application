@@ -32,8 +32,15 @@ function newUser(req, res) {
 
 async function newUserPost(req, res) {
     const { username, password } = req.body;
-    await db.insertUser(username, password);
-    res.redirect('/users');
+    try {
+        await db.insertUser(username, password);
+        res.redirect('/users');
+    } catch {
+        res.render('new-user', {
+            title: "New User",
+            message: "Username already in use. Pick another.",
+        });
+    }
 }
 
 async function deleteUser(req, res) {

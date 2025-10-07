@@ -32,7 +32,7 @@ There are users. There are carts. Each user has carts. Each cart a user has can 
 
 - [x] Add editing functions
 - [x] Improve user cart editing
-- [ ] Add error pages
+- [x] Add error handling (sort of)
 - [x] Add sorting
 - [ ] Add average review score on cart pages
 - [ ] Add user data to cart page
