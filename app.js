@@ -16,7 +16,7 @@ app.use('/', indexRouter);
 app.use('/carts', cartsRouter);
 app.use('/users', usersRouter);
 
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, (err) => {
     if (err) {
         throw err;
